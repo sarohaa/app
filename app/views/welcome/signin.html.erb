@@ -1,0 +1,31 @@
+<div class="jumbotron">
+	<div class="container">
+     <div class="row">
+<div class="container">
+		<% if flash[:error] -%>
+	<div class="alert alert-danger alert-dismissable">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>Warning!</strong> <%= flash[:error] -%>
+</div>
+	<% end -%>
+	<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-default">
+  <div class="panel-heading"><h3>Sign In <i class="fa fa-sign-in"></i> </h3></div>
+  <div class="panel-body">
+   <p class="text-muted">Fill The Following Details.</p>
+	<%= form_for(@user,:url => check_path)  do |f| -%>
+			<%= f.text_field :email ,class: "form-control" ,:placeholder => "Email Address",required: true -%>
+			<br />
+				<%= f.password_field :password ,class: "form-control" ,:placeholder => "Password",required: true -%><br/>
+				<%= f.submit("Sign In",class: "btn btn-primary btn-sm") -%>
+	<% end -%>
+  </div>
+   <div class="panel-footer"><a href="">Forgot Your Password?</a></div>
+</div>
+
+	</div>
+</div>
+</div>
+
+	</div>
+</div>

@@ -1,0 +1,72 @@
+<div class="jumbotron"></br>
+  <div class="container">
+
+  <div class="col-md-10 col-md-offset-0">
+  <a class="btn btn-primary btn-xs" href="<%= articles_path %>" role="button"><i class="fa fa-angle-double-left"></i> Back To Articles</a></br>
+</br>
+  
+<p>
+  <h4>
+  <strong>Title:</strong>
+  <%= @article.title %>
+
+ 
+
+  <strong>Text:</strong>
+  <%= @article.text %>
+</h4>
+</p>
+
+<p>
+  <% unless @article.comments.empty? %>
+
+
+	<h2><i class="fa fa-comments-o"></i> Comments</h2>
+
+<% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+  <p>
+    
+  <a class="btn btn-primary btn-xs" role="button" <%= link_to 'Destroy Comment', [comment.article, comment],
+               method: :delete
+                %></a>
+</p>
+<% end %>
+<% end %>
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-6">
+	<h2><i class="fa fa-comment-o"></i> Add a Comment</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter,class: "form-control" ,:placeholder => "Your name",required: true %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body,class: "form-control" ,:placeholder => "Comment",required: true %>
+  </p>
+  
+  <p>
+    <%= f.submit("Create Comment",class: "btn btn-primary btn-sm") %>
+  </p>
+<% end %>
+<td></p>
+
+
+
+</div>
+</div>
+</div>
+</div>
